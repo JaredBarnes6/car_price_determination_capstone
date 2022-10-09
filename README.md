@@ -1,6 +1,6 @@
 # Car Price Determination and Predictive Model
 
-![image](https://user-images.githubusercontent.com/97368604/194773765-6f76426c-9372-444d-964d-ddc4ce641128.png)
+![image](https://user-images.githubusercontent.com/97368604/194773838-b0393ecb-ab0d-45e4-957e-8822c0758139.png)
 
 Business Problem
 
