@@ -84,11 +84,11 @@ After tuning, the model achieved an accuracy score of 0.980. Clearly, the model 
 ## Calculating Feature Importances: 
 
 I made predictions and identified features importances using the “model.get_booster().get_score(importance_type='weight')” method on the tuned XGBoost Regressor model. The following were the five most important features influencing MSRP in descending order (see Figure 2 below):
- Engine HP 
- Year
- Highway MPG
- Popularity
- City MPG
+ - Engine HP 
+ - Year
+ - Highway MPG
+ - Popularity
+ - City MPG
 
  
 ![image](https://user-images.githubusercontent.com/97368604/194774013-d5e71358-9192-425d-9536-14c1658d1f41.png)
