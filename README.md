@@ -1,5 +1,7 @@
 # Car Price Determination and Predictive Model
 
+![image](https://user-images.githubusercontent.com/97368604/194773765-6f76426c-9372-444d-964d-ddc4ce641128.png)
+
 Business Problem
 
 Car manufacturers must determine Manufacturer’s Suggested Retail Price (MSRP) for newly made cars. MSRP contains subjective components that consider market value and manufacturing profit on top of manufacturing, distribution, and sales costs. A calculated determination of market value for existing cars, based on car features would greater inform the MSRP, allowing for optimal profit without overpricing.   
