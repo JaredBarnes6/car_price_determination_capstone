@@ -2,7 +2,7 @@
 
 ![image](https://user-images.githubusercontent.com/97368604/194773838-b0393ecb-ab0d-45e4-957e-8822c0758139.png)
 
-Business Problem
+## Business Problem
 
 Car manufacturers must determine Manufacturer’s Suggested Retail Price (MSRP) for newly made cars. MSRP contains subjective components that consider market value and manufacturing profit on top of manufacturing, distribution, and sales costs. A calculated determination of market value for existing cars, based on car features would greater inform the MSRP, allowing for optimal profit without overpricing.   
 
@@ -12,12 +12,12 @@ See the following link for more info: Do Car Dealers Really Lose Money? How To P
 Car buyers often spend too much for cars whose values are significantly less than expected. A shiny exterior or a persuasive salesman can deceive buyers into thinking a car is worth more than it is. It would be immensely valuable if a buyer could quickly determine true market value for a car so they can save the most and get the most for their money.    
 
 
-Dataset
+## Dataset
 
 The car data are in one data set, scraped from Edmunds.com and Twitter. Each row is a different car and each column is a different feature of that car. Some features include make, model, year, engine, and other properties of the car used to predict its price.  
 
 
-Anticipated Data Science Approach
+## Anticipated Data Science Approach
 
 My approach aims to accomplish two things: 
 (1.) Identify the top 3 to 5 car features that have the greatest influence on market value. These features can be used by dealerships and manufacturers in purchasing and/or building the most valuable and popular selling cars. 
@@ -29,14 +29,12 @@ Random Forest Regression
 XGBoost Regression 
 
 
-Data Cleaning: 
-
+## Data Cleaning: 
 
 All columns of the data set were of the expected data types. There were, however, numerous null values in 5 out of 16 columns. I calculated the percentage of the columns that were null, and none were above 0.58 % null, except for one column: “Market Category”. I replaced the nulls from that column with the string “No Category” and removed the other null rows completely. Overall, I only removed 101 rows, leaving a remaining 11,812 rows of data. The data were clean after dropping null values. 
 
 
-EDA:
-
+## EDA:
 
 Histograms of all numeric features showed the expected normal distributions, except for Popularity and Number of Doors. I expected this because there is nothing to suggest that popularity as a quantified value should follow a normal distribution and number of doors on a car is overwhelmingly either 2 doors or 4 doors (a few 3 door cars existed in the data). 
 I calculated a correlation heatmap to determine the most correlated features. Engine Horsepower and Engine Cylinders had the highest correlations with MSRP so I looked into those further, noting that the Bugatti Veyron 16.4 had the highest MSRP, highest horsepower, and greatest number of cylinders. 
@@ -45,20 +43,18 @@ I plotted the mean and median MSRP values by year, looking for any large trend i
 Figure 1: A plot of median MSRP as a function of time. A massive increase in MSRP occurred in the year 2000. Afterward, a steady increase in car value has continued with the exception of minor drops in MSRP along the way. 
 
 
-Converting Categorical Data to Numeric Data:
-
+## Converting Categorical Data to Numeric Data:
 
 Since the goal was to create a regression model, I needed to convert categorical data to numeric data. That meant that every category option was given its own column with either a 1 or a 0 in each entry as a Yes or No for the category. After doing this, I had a total of 1059 columns. 
 
 
-Train Test Splitting and Scaling:
+## Train Test Splitting and Scaling:
 
 Splitting: The data set was split into training and testing data - 80% training data, 20% testing data. All features except for MSRP were assigned as the X variable, while MSRP was assigned as the Y variable.
 
 Scaling: The X variable was scaled using sklearn’s MinMaxScaler() function. Both training and testing data were scaled for the X variable features. All numeric values were thus scaled between 0 and 1. 
 
-Model Algorithm Comparison:
-
+## Model Algorithm Comparison:
 
 I fit 3 models to the data to determine which works best at predicting the target variable using three different algorithms. The following 3 algorithms were applied and compared to one another:
 Linear Regression
@@ -76,13 +72,14 @@ I moved forward with the XGBoost model, doing hyperparameter tuning. However, it
 I used GridSearchCV to tune the model and achieved an R^2 value of 0.910, with the following parameters: 
 {'learning_rate': 0.1, 'max_depth': 5, 'n_estimators': 180}
 
-Model Effectiveness: 
+## Model Effectiveness: 
+
 After tuning, the model achieved an accuracy score of 0.980. Clearly, the model was predicting the test data very accurately, leading me to move forward in completing the second goal of the project: determine top car features in importance to MSRP.
  
 
 
 
-Calculating Feature Importances: 
+## Calculating Feature Importances: 
 
 I made predictions and identified features importances using the “model.get_booster().get_score(importance_type='weight')” method on the tuned XGBoost Regressor model. The following were the five most important features influencing MSRP in descending order (see Figure 2 and Figure3 below):
  Engine HP 
@@ -97,8 +94,7 @@ Figure 2: A barplot of features and their respective weights of importance on MS
 
 Figure 3: A snip of the car dataframe showing the column names that correspond to the feature names shown in Figure 2 (i.e. f1 = “Engine HP”, f0 = “Year”, f4 = “Highway MPG”, f6 = “Popularity”, and f5 = “City MPG”).
 
-Recommendations:     
-
+## Recommendations and Next Steps:     
 
 If a car dealership were to use this model, they could infer that the 5 main aspects of cars shown above are the most important to focus on when buying or selling vehicles. Further, they could identify the cars that have the best value for those qualities if they are buying, and try to sell them for higher price knowing that the market values those features. 
 
