@@ -40,6 +40,7 @@ Histograms of all numeric features showed the expected normal distributions, exc
 I calculated a correlation heatmap to determine the most correlated features. Engine Horsepower and Engine Cylinders had the highest correlations with MSRP so I looked into those further, noting that the Bugatti Veyron 16.4 had the highest MSRP, highest horsepower, and greatest number of cylinders. 
 I plotted the mean and median MSRP values by year, looking for any large trend in price over time. Because of large outliers, I chose to follow the median MSRP per year (Figure 1), seeing that there was a large spike in car prices in the year 2000. After that, MSRP has gone up steadily with the exception of minor drops along the way. 
 
+![image](https://user-images.githubusercontent.com/97368604/194773987-80b941f5-fc7b-4577-9c54-4f96a9d67952.png)
 Figure 1: A plot of median MSRP as a function of time. A massive increase in MSRP occurred in the year 2000. Afterward, a steady increase in car value has continued with the exception of minor drops in MSRP along the way. 
 
 
@@ -89,7 +90,7 @@ I made predictions and identified features importances using the “model.get_bo
  City MPG
 
  
-
+![image](https://user-images.githubusercontent.com/97368604/194774013-d5e71358-9192-425d-9536-14c1658d1f41.png)
 Figure 2: A barplot of features and their respective weights of importance on MSRP. See Figure 3 as the legend for features (i.e. f1 = “Engine HP”, f0 = “Year”, f4 = “Highway MPG”, f6 = “Popularity”, and f5 = “City MPG”).
 
 Figure 3: A snip of the car dataframe showing the column names that correspond to the feature names shown in Figure 2 (i.e. f1 = “Engine HP”, f0 = “Year”, f4 = “Highway MPG”, f6 = “Popularity”, and f5 = “City MPG”).
